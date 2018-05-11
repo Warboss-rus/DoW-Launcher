@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{EAA70689-3D7A-4737-92A6-CF30BE2182CB}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Launcher_XE2.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="ENG\Launcher_XE2_ENG.bdsproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="RUS\Launcher_XE2_RUS.bdsproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="Launcher_XE2">
+			<MSBuild Projects="Launcher_XE2.dproj"/>
+		</Target>
+		<Target Name="Launcher_XE2:Clean">
+			<MSBuild Projects="Launcher_XE2.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="Launcher_XE2:Make">
+			<MSBuild Projects="Launcher_XE2.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Launcher_XE2_ENG">
+			<MSBuild Projects="ENG\Launcher_XE2_ENG.bdsproj"/>
+		</Target>
+		<Target Name="Launcher_XE2_ENG:Clean">
+			<MSBuild Projects="ENG\Launcher_XE2_ENG.bdsproj" Targets="Clean"/>
+		</Target>
+		<Target Name="Launcher_XE2_ENG:Make">
+			<MSBuild Projects="ENG\Launcher_XE2_ENG.bdsproj" Targets="Make"/>
+		</Target>
+		<Target Name="Launcher_XE2_RUS">
+			<MSBuild Projects="RUS\Launcher_XE2_RUS.bdsproj"/>
+		</Target>
+		<Target Name="Launcher_XE2_RUS:Clean">
+			<MSBuild Projects="RUS\Launcher_XE2_RUS.bdsproj" Targets="Clean"/>
+		</Target>
+		<Target Name="Launcher_XE2_RUS:Make">
+			<MSBuild Projects="RUS\Launcher_XE2_RUS.bdsproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="Launcher_XE2;Launcher_XE2_ENG;Launcher_XE2_RUS"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="Launcher_XE2:Clean;Launcher_XE2_ENG:Clean;Launcher_XE2_RUS:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="Launcher_XE2:Make;Launcher_XE2_ENG:Make;Launcher_XE2_RUS:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>
